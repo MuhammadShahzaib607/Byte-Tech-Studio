@@ -75,7 +75,7 @@ const Navbar = () => {
           </div>
 
           {/* --- MOBILE MENU BUTTON --- */}
-          <div className="lg:hidden bg-white flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-purple-500 p-2 hover:bg-purple-500/10 rounded-full transition-all"
