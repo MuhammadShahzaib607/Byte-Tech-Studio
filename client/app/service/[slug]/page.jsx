@@ -80,7 +80,7 @@ const ServiceDetailPage = ({ params }) => {
 
     const phoneNumber = "+923403004439";
   const message = encodeURIComponent(
-    "Hello Byte Digital Studio! I visited your website and I am very interested in your premium services like MERN Stack Development and AI Solutions. I would like to discuss my project requirements with you in detail."
+    "Hello Byte Tech Studio! I visited your website and I am very interested in your premium services like MERN Stack Development and AI Solutions. I would like to discuss my project requirements with you in detail."
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
   // Decoding the slug to match our keys

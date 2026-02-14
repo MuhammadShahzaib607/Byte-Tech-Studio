@@ -13,7 +13,7 @@ const ServicesPage = () => {
 
 const phoneNumber = "+923403004439";
   const message = encodeURIComponent(
-    "Hello Byte Digital Studio! I visited your website and I am very interested in your premium services like MERN Stack Development and AI Solutions. I would like to discuss my project requirements with you in detail."
+    "Hello Tech Digital Studio! I visited your website and I am very interested in your premium services like MERN Stack Development and AI Solutions. I would like to discuss my project requirements with you in detail."
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
@@ -161,7 +161,7 @@ const phoneNumber = "+923403004439";
            <h3 className="text-3xl font-black text-white mb-6">Have a specific requirement?</h3>
            <p className="text-purple-100/40 mb-10 max-w-xl mx-auto italic text-sm">Our team is ready to engineer a custom solution tailored specifically to your project's unique challenges.</p>
            <a href={whatsappUrl} target="_blank" className="px-10 py-4 bg-purple-600 text-white font-black rounded-2xl shadow-xl hover:bg-purple-500 transition-all uppercase tracking-widest text-xs">
-              Start Your Project
+              Start Now
            </a>
         </motion.div>
 
