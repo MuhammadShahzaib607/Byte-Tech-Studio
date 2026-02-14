@@ -7,6 +7,7 @@ import {
     FiGrid, FiPlusCircle, FiClock, FiCheckCircle,
     FiUsers, FiPieChart, FiFileText, FiMenu, FiX
 } from 'react-icons/fi';
+import { IoMdHome } from 'react-icons/io';
 
 const menuItems = [
     { name: 'Dashboard', icon: <FiGrid />, href: '/dashboard' },
@@ -16,6 +17,7 @@ const menuItems = [
     { name: 'Team', icon: <FiUsers />, href: '/dashboard/team' },
     { name: 'Analytics', icon: <FiPieChart />, href: '/dashboard/analytics' },
     { name: 'Forms', icon: <FiFileText />, href: '/dashboard/forms' },
+    { name: 'Home', icon: <IoMdHome />, href: '/' },
 ];
 
 const DashboardSideBar = () => {
