@@ -17,7 +17,7 @@ const ContactPage = () => {
     e.preventDefault();
     // Yahan aap apni logic add kar sakte hain (EmailJS ya Backend API)
     console.log("Form Submitted:", formData);
-    alert("Thank you! Your message has been sent to Byte Digital Studio.");
+    alert("Thank you! Your message has been sent to Byte Tech Studio.");
   };
 
   const handleChange = (e) => {

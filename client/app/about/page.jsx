@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar.jsx"
 const AboutPage = () => {
   const founders = [
     {
-      name: "Ayesha",
+      name: "Sarika",
       role: "Co-Founder & AI Lead",
       desc: "An AI visionary specializing in neural networks and generative models. Sarika leads our creative intelligence department, ensuring every project is powered by cutting-edge automation.",
       gradient: "from-purple-400 to-purple-600",
