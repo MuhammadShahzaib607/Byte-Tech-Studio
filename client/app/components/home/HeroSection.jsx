@@ -4,6 +4,13 @@ import { motion } from "framer-motion";
 import { FaArrowRight, FaRocket, FaCode, FaRobot } from "react-icons/fa";
 
 const HeroSection = () => {
+
+    const phoneNumber = "+923403004439";
+  const message = encodeURIComponent(
+    "Hello Byte Tech Studio! I visited your website and I am very interested in your premium services like MERN Stack Development and AI Solutions. I would like to discuss my project requirements with you in detail."
+  );
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
   // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -20,7 +27,7 @@ const HeroSection = () => {
 
   return (
     // Updated BG to Midnight Purple (#0f0a1a) to match image theme
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0f0a1a] py-20">
+    <section className="relative min-h-auto lg:min-h-screen flex items-center justify-center overflow-hidden bg-[#0f0a1a] py-18 lg:py-20">
       
       {/* --- BACKGROUND ELEMENTS --- */}
       {/* Dynamic Purple Glows - Consistent with Process Section */}
@@ -65,15 +72,18 @@ const HeroSection = () => {
 
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-5">
-              <button className="group relative bg-purple-600 text-white px-8 py-4 rounded-2xl font-black flex items-center gap-3 shadow-xl shadow-purple-900/40 hover:bg-purple-500 transition-all cursor-pointer overflow-hidden">
+              <a 
+              href={whatsappUrl}
+              target="_blank"
+              className="group relative bg-purple-600 text-white px-8 py-4 rounded-2xl font-black flex items-center gap-3 shadow-xl shadow-purple-900/40 hover:bg-purple-500 transition-all cursor-pointer overflow-hidden">
                 <span className="relative z-10">Start Your Project</span>
                 <FaArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              </button>
+              </a>
               
-              <button className="px-8 py-4 rounded-2xl font-bold border border-purple-500/20 text-purple-200 hover:bg-purple-500/10 transition-all cursor-pointer backdrop-blur-sm">
+              {/* <button className="px-8 py-4 rounded-2xl font-bold border border-purple-500/20 text-purple-200 hover:bg-purple-500/10 transition-all cursor-pointer backdrop-blur-sm">
                 View Our Work
-              </button>
+              </button> */}
             </motion.div>
           </motion.div>
 

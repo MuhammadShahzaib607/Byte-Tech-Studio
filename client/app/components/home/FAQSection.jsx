@@ -82,7 +82,7 @@ const FAQSection = () => {
                 onClick={() => toggleAccordion(faq.id)}
                 className="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none"
               >
-                <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${
+                <span className={`text-lg font-bold tracking-tight transition-colors duration-300 pr-5 ${
                   activeId === faq.id ? "text-white" : "text-purple-100/70"
                 }`}>
                   {faq.question}

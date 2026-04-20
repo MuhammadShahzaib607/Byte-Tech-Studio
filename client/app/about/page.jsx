@@ -9,29 +9,23 @@ import Navbar from "../components/Navbar.jsx"
 const AboutPage = () => {
   const founders = [
     {
-      name: "Sarika",
-      role: "Co-Founder & AI Lead",
-      desc: "An AI visionary specializing in neural networks and generative models. Sarika leads our creative intelligence department, ensuring every project is powered by cutting-edge automation.",
-      gradient: "from-purple-400 to-purple-600",
-    },
-    {
-      name: "Abdul Quddos",
-      role: "Co-Founder & CFO",
-      desc: "The strategic mind behind our operations. Abdul ensures that Byte Tech Studio remains a sustainable and scalable powerhouse, managing finances and long-term business growth.",
-      gradient: "from-purple-500 to-purple-800",
-    },
-    {
       name: "Muhammad Shahzaib",
       role: "Co-Founder & CTO",
-      desc: "A full-stack architect with a passion for clean code. Shahzaib oversees the technical ecosystem, from MERN architectures to enterprise-grade security protocols.",
+      desc: "A MERN stack developer building SaaS products, e-commerce stores, and custom CRM dashboards. He specializes in integrating smart AI features into web applications to make them more efficient.",
       gradient: "from-purple-600 to-purple-900",
     },
-  ];
+    {
+      name: "Sarika",
+      role: "Co-Founder & AI Lead",
+      desc: "The creative force behind our brand. Sarika specializes in AI video generation and graphic design, turning simple concepts into high-quality visual experiences.",
+      gradient: "from-purple-400 to-purple-600",
+    },
+];
 
   return (
     <>
     <Navbar />
-    <div className="bg-[#0f0a1a] min-h-screen pt-32 pb-20 overflow-hidden">
+    <div className="bg-[#0f0a1a] min-h-screen pt-20 lg:pt-32 pb-20 overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1)_0%,transparent_50%)] pointer-events-none" />
 
@@ -53,7 +47,7 @@ const AboutPage = () => {
             </h1>
             <div className="space-y-6 text-purple-100/60 text-lg leading-relaxed">
               <p>
-                Byte Tech Studio isn't just another agency; it’s a movement started by a group of passionate youngsters right from the heart of **Pakistan**. We saw the world shifting towards AI and high-end automation, and we decided that Pakistan’s talent should be at the forefront of this digital revolution.
+                Byte Tech Studio isn't just another agency; it’s a movement started by a group of passionate youngsters right from the heart of Pakistan. We saw the world shifting towards AI and high-end automation, and we decided that Pakistan’s talent should be at the forefront of this digital revolution.
               </p>
               <p>
                 Starting as a small team with nothing but high-end laptops and big dreams, we’ve built a startup that bridges the gap between traditional development and the future of Artificial Intelligence. We don't just build websites; we build digital legacies.

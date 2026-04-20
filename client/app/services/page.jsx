@@ -80,7 +80,7 @@ const phoneNumber = "+923403004439";
   return (
     <>
     <Navbar />
-    <div className="bg-[#0f0a1a] min-h-screen pt-32 pb-20 overflow-hidden">
+    <div className="bg-[#0f0a1a] min-h-screen pt-16 lg:pt-32 pb-20 overflow-hidden">
       {/* Dynamic Background Glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[120px] pointer-events-none" />
 
