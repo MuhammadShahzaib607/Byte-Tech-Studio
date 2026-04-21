@@ -1,4 +1,4 @@
-import { ChatSession, GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
 import dotenv from "dotenv"
 import Chat from "../models/AiChatSchema.js"
 import { sendRes } from "../utils/responseHandler.js";
@@ -6,12 +6,12 @@ import { formatDateTime } from "../utils/formattedDate.js";
 
 dotenv.config()
 
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+const groq = new Groq({ apiKey: process.env.API_KEY });
 
 export const addChat = async (req, res) => {
     try {
-        const { userId, userText, selectedLanguage } = req.body
+        let { userId, userText, selectedLanguage } = req.body
+        !selectedLanguage ? selectedLanguage = "English" : null
         const prevChats = await Chat.findOne({ userId: userId }) || null
         const history = prevChats ? prevChats?.chats?.map(chat => ([
             { role: "user", parts: [{ text: chat.userText }] },
@@ -50,16 +50,28 @@ export const addChat = async (req, res) => {
 - Latest User Message to Respond to: ${userText}
 `;
 
-        const result = await model.generateContent(finalPrompt);
-        const response = await result.response;
-        const text = await response.text();
+        const completion = await groq.chat.completions.create({
+            messages: [
+                {
+                    role: "system",
+                    content: `You are the AI Business Consultant for ByteTechStudio`
+                },
+                {
+                    role: "user",
+                    content: finalPrompt,
+                },
+            ],
+            model: "llama-3.1-8b-instant", 
+        });
+
+        const aiResponse = completion.choices[0]?.message?.content || "";
         const updatedChats = await Chat.findOneAndUpdate(
             { userId: userId },
             {
                 $push: {
                     chats: {
                         userText,
-                        aiText: text,
+                        aiText: aiResponse,
                         date: formatDateTime()
                     }
                 }
