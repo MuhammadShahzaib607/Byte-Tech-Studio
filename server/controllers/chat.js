@@ -15,11 +15,11 @@ export const addChat = async (req, res) => {
         const prevChats = await Chat.findOne({ userId: userId }) || null
         const history = prevChats ? prevChats?.chats?.map(chat => ([
             { role: "user", parts: [{ text: chat.userText }] },
-            { role: "model", parts: [{ text: chat.aiText }] }
+           { role: "model", parts: [{ text: chat.aiText }] }
         ])).flat() : [];
         const finalPrompt = `
 ### ROLE
-You are the "AI Business Consultant" for ByteTechStudio. Your primary mission is to convert website visitors into high-paying clients by showcasing expertise in MERN Stack, AI Integration, and Creative Design.
+// You are the "AI Business Consultant" for ByteTechStudio. Your primary mission is to convert website visitors into high-paying clients by showcasing expertise in MERN Stack, AI Integration, and Creative Design.
 
 ### 1. ADAPTIVE TONE & PSYCHOLOGY:
 - **Mirroring:** Analyze the user's latest message. If they are serious/corporate, respond with formal authority. If they are friendly/casual, use a "Professional Friend" tone (e.g., using "Bhai" or "Friend" occasionally but keeping it respectful).
@@ -68,7 +68,33 @@ You are the "AI Business Consultant" for ByteTechStudio. Your primary mission is
         )
         sendRes(res, 200, true, "Response get successfully", updatedChats)
     } catch (error) {
-        sendRes(res, 400, false, "something went wrong")
+        sendRes(res, 400, false, error.message)
         console.log("Error ===>>", error.message)
     }
+}
+
+export const getSingleUserChats = async (req, res)=> {
+    try {
+        const { userId } = req.params;
+        const userChats = await Chat.findOne({userId})
+        if (!userChats) {
+         return sendRes(res, 404, false, "No chats Found")
+        }
+          sendRes(res, 200, true, "Chats Get Successfully", userChats)
+    } catch (error) {
+    return sendRes(res, 400, false, error.message)
+    }    
+}
+
+export const deleteSingleUserConversation = async (req, res)=> {
+try {
+    const { userId } = req.body
+    if (!userId) {
+        return sendRes(res, 404, false, "UserId is Required")
+    }
+    const deletedConversation = await Chat.findOneAndDelete({userId})
+sendRes(res, 200, true, "Chats Delete Successfully")
+} catch (error) {
+    sendRes(res, 400, false, error.message)
+}
 }
