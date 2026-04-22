@@ -13,10 +13,10 @@ export const addChat = async (req, res) => {
         let { userId, userText, selectedLanguage } = req.body
         !selectedLanguage ? selectedLanguage = "English" : null
         const prevChats = await Chat.findOne({ userId: userId }) || null
-        const history = prevChats ? prevChats?.chats?.map(chat => ([
-            { role: "user", parts: [{ text: chat.userText }] },
-            { role: "assistant", parts: [{ text: chat.aiText }] }
-        ])).flat() : [];
+        const history = prevChats ? prevChats.chats.slice(-6).map(chat => ([
+    { role: "user", content: chat.userText },
+    { role: "assistant", content: chat.aiText }
+])).flat() : [];
         const finalPrompt = `
 ### ROLE
 You are the "Senior AI Business Consultant" at ByteTechStudio. Your goal is to keep the user engaged in a loop, showcasing our MERN and AI expertise.
