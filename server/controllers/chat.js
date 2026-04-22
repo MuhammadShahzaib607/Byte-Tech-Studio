@@ -15,33 +15,38 @@ export const addChat = async (req, res) => {
         const prevChats = await Chat.findOne({ userId: userId }) || null
         const history = prevChats ? prevChats?.chats?.map(chat => ([
             { role: "user", parts: [{ text: chat.userText }] },
-           { role: "assistant", parts: [{ text: chat.aiText }] }
+            { role: "assistant", parts: [{ text: chat.aiText }] }
         ])).flat() : [];
         const finalPrompt = `
-### SYSTEM IDENTITY & ROLE
-You are the "Senior AI Business Consultant" for ByteTechStudio. Your absolute goal is to convert visitors into high-paying clients by painting a vision of their success.
+### ROLE
+You are the "Senior AI Business Consultant" at ByteTechStudio. Your goal is to keep the user engaged in a loop, showcasing our MERN and AI expertise.
 
-### ⚠️ CRITICAL RESTRICTION: NO PRICING (ZERO TOLERANCE)
-- **STRICTLY FORBIDDEN:** Do NOT mention any numbers, currency symbols ($), ranges (e.g., $5k-$10k), or estimates.
-- **ACTION:** If the user asks about price, budget, or "how much", you MUST decline politely using this exact mindset: "Every masterpiece is unique. Once we understand your vision, our Founders will provide a customized quote that ensures the best value."
-- **REASONING:** We do not sell packages; we build custom-engineered solutions.
+### ⚠️ STRICT LANGUAGE RULE (ZERO TOLERANCE)
+- **ONLY ENGLISH:** You must respond in professional, high-end English ONLY. 
+- Even if the user speaks Roman Urdu, Hindi, Spanish, or any other language, your response MUST be 100% English. 
+- NEVER translate or use phrases from the user's language.
 
-### 📝 RESPONSE STRUCTURE & LENGTH
-- **Detail-Oriented:** Do NOT give short, one-paragraph answers. Even for simple questions, explain the "How" and "Why" of our expertise. 
-- **The Roadmap:** Breakdown the solution into phases (e.g., Discovery, Development, AI Integration, Deployment) to make the response look comprehensive and professional.
-- **Comparison:** Show why ByteTechStudio's MERN + AI approach is superior to standard agencies.
+### 📝 CONVERSATION STRATEGY
+1. **Direct Answer First:** Pehle user ke sawal ka detail mein jawab do. Don't dodge the question.
+2. **The Curiosity Loop:** Jawab dene ke baad, user se ek aisa "Thought-Provoking" sawal pucho ke wo mazeed details mangne par majboor ho jaye. (e.g., "Would you like to see how we can automate your specific lead-capture flow with AI?")
+3. **Casual yet Professional:** Use a "Silicon Valley Agency" vibe. Not too robotic, but very authoritative.
+4. **Formatting:** Use Bullet points ONLY when listing services or phases. Keep the rest as engaging paragraphs.
 
-### 🛠 SERVICES TO HIGHLIGHT
-- Full-stack MERN Development, AI-Powered Web Apps, Custom Dashboards, E-commerce, and AI Brand Models.
-- **Upsell:** "Just as I am helping you right now, we can integrate a similar AI into your business to automate your leads and growth."
+### 🚫 NO PRICING RULE
+- If asked about cost, use: "Every masterpiece is unique. Once we understand your vision, our Founders will provide a customized quote that ensures the best value."
 
-### 🌐 LANGUAGE & TONE
-- **Language:** Use ONLY English. 
-- **Tone:** Professional, Authoritative, and Visionary. If English, ensure it sounds like a premium agency, not a local chat.
+### ⚠️ SERVICE SCOPE (STRICT)
+Only mention the following services. Do NOT invent or mention Machine Learning (ML), Data Science, or any service not listed below:
+1. MERN Stack Web Development (Next.js, MongoDB, Express, React, Node)
+2. AI-Powered Web Applications (Gemini/Groq Integration)
+3. Custom Admin Dashboards
+4. E-commerce Store Development
+5. AI Short Films & Video Clips Generation
+6. AI Brand Models & Advertisement Tasks
 
-### 🎯 INPUT DATA
-- User Question: ${userText}
-- Previous Context: ${JSON.stringify(history)}
+### INPUT DATA
+- User Message: "${userText}"
+- Language Requirement: English Only.
 
 ### 🚪 MANDATORY CLOSING
 Every response MUST end with:
@@ -54,12 +59,16 @@ Every response MUST end with:
                     role: "system",
                     content: finalPrompt
                 },
+                ...history,
                 {
                     role: "user",
                     content: userText,
                 },
             ],
             model: "llama-3.1-8b-instant",
+            temperature: 0.3,
+            top_p: 1,
+            max_tokens: 1024,
         });
 
         const aiResponse = completion.choices[0]?.message?.content || "";
@@ -83,28 +92,28 @@ Every response MUST end with:
     }
 }
 
-export const getSingleUserChats = async (req, res)=> {
+export const getSingleUserChats = async (req, res) => {
     try {
         const { userId } = req.params;
-        const userChats = await Chat.findOne({userId})
+        const userChats = await Chat.findOne({ userId })
         if (!userChats) {
-         return sendRes(res, 404, false, "No chats Found")
+            return sendRes(res, 404, false, "No chats Found")
         }
-          sendRes(res, 200, true, "Chats Get Successfully", userChats)
+        sendRes(res, 200, true, "Chats Get Successfully", userChats)
     } catch (error) {
-    return sendRes(res, 400, false, error.message)
-    }    
+        return sendRes(res, 400, false, error.message)
+    }
 }
 
-export const deleteSingleUserConversation = async (req, res)=> {
-try {
-    const { userId } = req.body
-    if (!userId) {
-        return sendRes(res, 404, false, "UserId is Required")
+export const deleteSingleUserConversation = async (req, res) => {
+    try {
+        const { userId } = req.body
+        if (!userId) {
+            return sendRes(res, 404, false, "UserId is Required")
+        }
+        const deletedConversation = await Chat.findOneAndDelete({ userId })
+        sendRes(res, 200, true, "Chats Delete Successfully")
+    } catch (error) {
+        sendRes(res, 400, false, error.message)
     }
-    const deletedConversation = await Chat.findOneAndDelete({userId})
-sendRes(res, 200, true, "Chats Delete Successfully")
-} catch (error) {
-    sendRes(res, 400, false, error.message)
-}
 }
