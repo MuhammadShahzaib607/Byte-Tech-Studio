@@ -42,31 +42,48 @@ const AskAiPage = () => {
   };
 
   const handleSendMessage = async (e) => {
-    e.preventDefault();
-    if (!input.trim() || loading) return;
+  e.preventDefault();
+  if (!input.trim() || loading) return;
 
-    const userText = input;
-    setInput("");
-    setLoading(true);
+  const userText = input;
+  setInput("");
+  setLoading(true);
 
-    try {
-      await fetch("https://byte-tech-studio-backend.vercel.app/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId,
-          userText,
-          selectedLanguage: "English",
-        }),
-      });
-      // Refresh chats after sending
-      await fetchChats(userId);
-    } catch (err) {
-      console.error("Error sending message:", err);
-    } finally {
-      setLoading(false);
+  setTimeout(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  };
+  }, 10);
+
+  try {
+    const res = await fetch("https://byte-tech-studio-backend.vercel.app/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId,
+        userText,
+        selectedLanguage: "English",
+      }),
+    });
+
+    if (res.ok) {
+      await fetchChats(userId); 
+      
+      setTimeout(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollTo({
+            top: scrollRef.current.scrollHeight,
+            behavior: "smooth", 
+          });
+        }
+      }, 100); 
+    }
+  } catch (err) {
+    console.error("Error sending message:", err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleResetChat = async () => {
     if (!confirm("Are you sure you want to clear the chat history?")) return;
@@ -108,7 +125,7 @@ const AskAiPage = () => {
             className="flex-grow overflow-y-auto p-4 md:p-6 space-y-6 scroll-smooth custom-scrollbar"
           >
             {messages.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-center opacity-60 px-6">
+              <div className="h-full flex flex-col items-center justify-center text-center opacity-60 px-6 select-none">
                 <div className="bg-purple-600/20 p-4 rounded-full mb-4">
                     <Sparkles size={40} className="text-[#8D1BE6]" />
                 </div>
