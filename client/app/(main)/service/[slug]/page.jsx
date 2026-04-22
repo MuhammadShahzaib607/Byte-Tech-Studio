@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import Navbar from "../../components/Navbar.jsx"
-import Footer from "../../components/Footer.jsx"
 import { motion } from "framer-motion";
 import { 
   FaCode, FaRobot, FaLayerGroup, FaStore, 
@@ -93,8 +91,7 @@ const ServiceDetailPage = ({ params }) => {
 
   return (
     <>
-    <Navbar />
-    <div className="bg-[#0f0a1a] min-h-screen pt-32 pb-20 relative overflow-hidden">
+    <div className="bg-[#0f0a1a] min-h-screen pt-20 lg:pt-25 pb-20 relative overflow-hidden">
       {/* Dynamic Glow Background */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none opacity-50" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none opacity-30" />
@@ -165,7 +162,6 @@ const ServiceDetailPage = ({ params }) => {
         </motion.div>
       </div>
     </div>
-    <Footer />
     </>
   );
 };

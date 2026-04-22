@@ -2,8 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaRocket, FaLightbulb, FaGlobe } from "react-icons/fa";
-import Footer from "../components/Footer.jsx"
-import Navbar from "../components/Navbar.jsx"
 
 
 const AboutPage = () => {
@@ -24,8 +22,7 @@ const AboutPage = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="bg-[#0f0a1a] min-h-screen pt-20 lg:pt-32 pb-20 overflow-hidden">
+    <div className="bg-[#0f0a1a] min-h-screen pt-20 lg:pt-25 pb-20 overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.1)_0%,transparent_50%)] pointer-events-none" />
 
@@ -118,7 +115,6 @@ const AboutPage = () => {
         </div>
       </div>
     </div>
-    <Footer />
     </>
   );
 };

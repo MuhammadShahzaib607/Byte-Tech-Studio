@@ -9,7 +9,9 @@ import {
 
 const Footer = () => {
   const phoneNumber = "+923403004439";
-  const email = "hello@bytedigitalstudio.com";
+  const email = "bytetechstudio19@gmail.com";
+  const date = new Date()
+  const year = date.getFullYear()
   
   const navLinks = [
     { name: "Home", href: "/" },
@@ -20,9 +22,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaFacebookF />, href: "#" },
-    { icon: <FaInstagram />, href: "#" },
-    { icon: <FaLinkedinIn />, href: "#" },
+    { icon: <FaFacebookF />, href: "" },
+    { icon: <FaInstagram />, href: "" },
+    { icon: <FaLinkedinIn />, href: "" },
     { icon: <FaWhatsapp />, href: `https://wa.me/${phoneNumber}` },
   ];
 
@@ -120,7 +122,7 @@ const Footer = () => {
         {/* --- BOTTOM BAR --- */}
         <div className="pt-8 border-t border-purple-500/10 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-purple-100/30 text-[11px] font-medium tracking-wider text-center md:text-left">
-            Copyright © Byte Tech Studio 2026. All Rights Reserved.
+            Copyright © Byte Tech Studio {year}. All Rights Reserved.
           </p>
           
           <div className="flex gap-8">

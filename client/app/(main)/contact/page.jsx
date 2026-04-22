@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPaperPlane, FaWhatsapp, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -26,8 +24,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="bg-[#0f0a1a] min-h-screen pt-20 lg:pt-32 pb-20 relative overflow-hidden">
+      <div className="bg-[#0f0a1a] min-h-screen pt-20 lg:pt-25 pb-20 relative overflow-hidden">
         {/* Background Ambient Glows */}
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none" />
@@ -165,7 +162,6 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
