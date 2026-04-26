@@ -13,11 +13,17 @@ const AboutPage = () => {
       gradient: "from-purple-600 to-purple-900",
     },
     {
-      name: "Sarika",
-      role: "Co-Founder & AI Lead",
-      desc: "The creative force behind our brand. Sarika specializes in AI video generation and graphic design, turning simple concepts into high-quality visual experiences.",
+      name: "Abdul Quddos",
+      role: "Co-Founder & Finance Lead",
+      desc: "Responsible for managing finances, budgeting, and financial planning. He ensures the company’s operations run smoothly while maintaining strong financial control and compliance.",
       gradient: "from-purple-400 to-purple-600",
     },
+    // {
+    //   name: "Sarika",
+    //   role: "Co-Founder & AI Lead",
+    //   desc: "The creative force behind our brand. Sarika specializes in AI video generation and graphic design, turning simple concepts into high-quality visual experiences.",
+    //   gradient: "from-purple-400 to-purple-600",
+    // },
 ];
 
   return (

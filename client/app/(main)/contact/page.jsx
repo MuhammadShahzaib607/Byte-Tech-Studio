@@ -54,7 +54,7 @@ const ContactPage = () => {
               {/* Contact Details */}
               <div className="space-y-6 pt-8">
                 {[
-                  { icon: <FaEnvelope />, text: "hello@bytedigitalstudio.com", label: "Email Us" },
+                  { icon: <FaEnvelope />, text: "bytetechstudio19@gmail.com", label: "Email Us" },
                   { icon: <FaWhatsapp />, text: "+92 340 3004439", label: "WhatsApp" },
                   { icon: <FaMapMarkerAlt />, text: "Karachi, Pakistan", label: "Headquarters" },
                 ].map((item, i) => (
