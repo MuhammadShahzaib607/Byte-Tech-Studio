@@ -50,7 +50,7 @@ Only mention the following services. Do NOT invent or mention Machine Learning (
 
 ### 🚪 MANDATORY CLOSING
 Every response MUST end with:
-"For further discussion, please contact our founders: +92 3403004439 / +92 3192486033"
+"For further discussion, please contact our founders: +92 3403004439 / +92 3371280194"
 `;
 
         const completion = await groq.chat.completions.create({
