@@ -6,7 +6,7 @@ A modern digital agency website designed to bridge the gap between clients and h
 
 ByteTechStudio is a startup founded by two young developers from Pakistan with a vision to lead in the AI era. The platform serves as a professional hub where clients can explore our services and connect with us. It features a custom-trained AI Chatbot that acts as a 24/7 consultant, providing instant information about our business, services, and goals to any visitor.
 
-Check out the live project here: [https://byte-tech-studio.vercel.app/](https://byte-tech-studio.vercel.app/)
+Check out the live project here: [Visit Website...](https://byte-tech-studio.vercel.app/)
 
 ## Tech Stack
 
