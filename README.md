@@ -26,9 +26,9 @@ To run the project locally for testing or development, follow these steps:
 
 1. Clone the repository
 
-   ```bash
-   git clone https://github.com/MuhammadShahzaib607/Byte-Tech-Studio.git
-   ```
+```bash
+git clone https://github.com/MuhammadShahzaib607/Byte-Tech-Studio.git
+```
 
 2. Install dependencies
 
@@ -36,8 +36,8 @@ To run the project locally for testing or development, follow these steps:
 npm install
 ```
 
-3.
+3. Start the application
 
 ```bash
-Start the application
+npm run dev
 ```
