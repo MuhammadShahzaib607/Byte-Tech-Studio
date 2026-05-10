@@ -3,8 +3,8 @@ import { addChat, deleteSingleUserConversation, getSingleUserChats } from "../co
 
 const router = express.Router()
 
-router.post("/", addChat)
-router.get("/:userId", getSingleUserChats)
-router.delete("/", deleteSingleUserConversation)
+router.post("/", addChat);
+router.get("/:userId", getSingleUserChats);
+router.delete("/", deleteSingleUserConversation);
 
 export default router;
