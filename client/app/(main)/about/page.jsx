@@ -36,7 +36,7 @@ const AboutPage = () => {
         
         {/* --- HERO SECTION: OUR STORY --- */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
-          <motion.div
+          <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
