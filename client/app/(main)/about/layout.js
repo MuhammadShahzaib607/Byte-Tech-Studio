@@ -6,7 +6,7 @@ export const metadata = {
   description: "Learn about Byte Digital Studio, a Pakistan-based startup by Muhammad Shahzaib & Sarika. We bridge the gap between MERN Stack development and AI innovation to build digital legacies.",
   
   keywords: [
-    "Byte Digital Studio Founders",
+    "Byte Tech Studio Founders",
     "Muhammad Shahzaib MERN Developer",
     "Sarika AI Video Lead",
     "AI Startup Pakistan",
