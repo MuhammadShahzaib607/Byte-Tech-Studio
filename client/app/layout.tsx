@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   verification: {
     google: "9RKSte9mI5nLHZti7NKj-dT2zJz6G5Q5rPb4gmg-PSY",
   },
+  other: {
+    "og:site_name": "Byte Tech Studio",
+  }
 };
 
 export default function RootLayout({
@@ -38,6 +41,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Byte Tech Studio",
+              "url": "https://byte-tech-studio.vercel.app"
+            }),
+          }}
+        />
         {children}
         <Analytics />
       </body>
